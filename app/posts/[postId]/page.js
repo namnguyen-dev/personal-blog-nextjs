@@ -5,6 +5,7 @@ import { getPosts } from '@/lib/fetcher';
 import { notFound } from 'next/navigation';
 import { formatDate } from '@/lib/formatDate';
 import { getPostById } from '@/lib/fetcher';
+import RecentPost from '@/app/components/RecentPost';
 
 export async function generateStaticParams() {
   const posts = await getPosts(); //deduped!
@@ -30,7 +31,7 @@ export async function generateMetadata({ params: { postId } }) {
   };
 }
 
-export default async function Post({ params: { postId } }) {
+export default async function SinglePost({ params: { postId } }) {
   const post = await getPostById(postId);
   const posts = await getPosts();
   if (!post || !posts) notFound();
@@ -52,7 +53,8 @@ async function Article({ post, recentPosts }) {
   const content = await markdownToHtml(mdContent);
   return (
     <Suspense fallback={<loading />}>
-      <main>
+      {/* Single post */}
+      <div>
         <article>
           <header className="mx-auto mt-20 max-w-screen-lg rounded-t-lg bg-white pt-16 text-center shadow-lg">
             <p className="text-gray-500">{formatDate(published)}</p>
@@ -86,12 +88,14 @@ async function Article({ post, recentPosts }) {
             </div>
           </div>
         </article>
-      </main>
+      </div>
       <div className="w-fit mx-auto mt-10 flex space-x-2">
         <div className="h-0.5 w-2 bg-gray-600" />
         <div className="h-0.5 w-32 bg-gray-600" />
         <div className="h-0.5 w-2 bg-gray-600" />
       </div>
+
+      {/* Recent Posts */}
       <div
         aria-label="Recent Posts"
         className="mx-auto mt-10 max-w-screen-xl py-20"
@@ -105,7 +109,11 @@ async function Article({ post, recentPosts }) {
               View all the latest posts{' '}
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-2 xl:grid-cols-2 xl:gap-16"></div>
+          <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-2 xl:grid-cols-2 xl:gap-16">
+            {recentPosts?.map(post => (
+              <RecentPost key={post.id} post={post} />
+            ))}
+          </div>
         </div>
       </div>
     </Suspense>

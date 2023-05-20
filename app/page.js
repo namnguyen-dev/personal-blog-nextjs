@@ -1,6 +1,7 @@
 import Welcome from './components/Welcome';
 import WeeklyPosts from './components/WeeklyPosts';
 import TrendingPosts from './components/TrendingPosts';
+import AllPosts from './components/AllPosts';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Welcome />
       <WeeklyPosts />
       <TrendingPosts />
+      <AllPosts />
     </main>
   );
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "airtable-node": "^0.1.20",
     "autoprefixer": "10.4.14",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",

@@ -18,15 +18,15 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="w-96 order-3 flex justify-center font-openSans ">
-          <div className="flex gap-6">
+          <div className="grid grid-cols-2 gap-6">
             <Link href={'/allposts'}>
-              <p className="hover:underline hover:underline-offset-4 wavy">
+              <p className="hover:underline hover:underline-offset-4 decoration-wavy">
                 Archive
               </p>
             </Link>
 
             <Link href={'/contact'}>
-              <p className="hover:underline hover:underline-offset-4 wavy">
+              <p className="hover:underline hover:underline-offset-4 decoration-wavy">
                 Contact
               </p>
             </Link>

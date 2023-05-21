@@ -5,27 +5,28 @@ export default function Footer() {
     <footer className="bg-gray-50">
       <div className="container mx-auto sm:flex sm:justify-center py-12">
         <div className="py-5">
-          <div className="flex gap-6 justify-center">
+          <div className="flex justify-center">
             <a
               href="https://twitter.com/NamNguyen_Dev"
               target="_blank"
               rel="noopener noreferrer"
+              className="ml-6"
             >
               <ImTwitter color="#888888" />
             </a>
             <a
               href="https://www.linkedin.com/in/nam-dev/"
-              className="social-icon"
               target="_blank"
               rel="noopener noreferrer"
+              className="ml-6"
             >
               <ImLinkedin color="#888888" />
             </a>
             <a
               href="https://namdeveloper.netlify.app/"
-              className="social-icon"
               target="_blank"
               rel="noopener noreferrer"
+              className="ml-6"
             >
               <ImHome color="#888888" />
             </a>
